@@ -5,14 +5,27 @@ import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.spring.entities.Trainee;
-import com.spring.jdbc.dao.TraineeDaoImpl;
+import com.spring.jdbc.dao.TraineeDao;
 
 public class App {
 	public static void main(String[] args) {
 		ApplicationContext context = new ClassPathXmlApplicationContext("config.xml");
-		TraineeDaoImpl traineeDao = context.getBean(TraineeDaoImpl.class);
-
-		System.out.println(traineeDao.insert(new Trainee(104, "Harshit Lohat", "New York, USA")));
+		TraineeDao traineeDao = context.getBean(TraineeDao.class);
+		Trainee newTrainee = new Trainee(104, "Suparshav Lohat", "Harayana");
+		
+//      Create
+//		System.out.println(traineeDao.insert(newTrainee));
+		
+//		Read
+//		System.out.println(traineeDao.fetch(104));
+//		System.out.println(traineeDao.fetchAll());
+		
+//		Update
+//		newTrainee.setLocation("Gurugram");
+//		System.out.println(traineeDao.update(new Trainee(104, "Suparshav Lohat", "Gurugaon")));
+		
+//		Delete
+//		System.out.println(traineeDao.delete(104));
 
 		((AbstractApplicationContext) context).close();
 	}
