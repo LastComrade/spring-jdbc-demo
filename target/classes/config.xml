@@ -9,7 +9,9 @@
         http://www.springframework.org/schema/context 
         http://www.springframework.org/schema/context/spring-context.xsd">
 
-	<bean name="ds" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+	<!-- Fully qualified class name -->
+	<bean name="ds"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName"
 			value="com.mysql.cj.jdbc.Driver" />
 		<property name="url"
@@ -21,6 +23,10 @@
 	<bean name="jdbcTemplate"
 		class="org.springframework.jdbc.core.JdbcTemplate">
 		<property name="dataSource" ref="ds" />
+	</bean>
+
+	<bean name="trnDao" class="com.spring.jdbc.dao.TraineeDaoImpl">
+		<property name="template" ref="jdbcTemplate" />
 	</bean>
 
 </beans>
